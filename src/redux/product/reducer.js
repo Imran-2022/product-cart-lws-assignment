@@ -11,7 +11,9 @@ const reducer = (state = initialState, action) => {
         case QUANTITY_DECREMENT:
             return [...state.map(item => {
                 if (item.product_id === action.payload) {
-                    item.product_quantity--;
+                    if(item.product_quantity>0){
+                        item.product_quantity--;
+                    }
                 }
                 return item;
             })]

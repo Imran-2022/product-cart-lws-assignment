@@ -24,7 +24,7 @@ const ProductContainer = ({ dt }) => {
           <p className="productPrice">BDT <span className="lws-price">{product_price}</span></p>
           <p className="productQuantity">QTY <span className="lws-quantity">{product_quantity}</span></p>
         </div>
-        <button className="lws-btnAddToCart" onClick={handleCart}>Add To Cart</button>
+        <button disabled={!product_quantity} className="lws-btnAddToCart" onClick={handleCart}>Add To Cart</button>
       </div>
     </div>
 

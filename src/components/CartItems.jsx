@@ -13,8 +13,11 @@ const CartItems = ({ dt }) => {
         dispatch(incrementCartItem(product_id))
     }
     const handleQuantityDecre = () => {
-        dispatch(incrementQuantity(product_id))
+        
         dispatch(decrementCartItem(product_id))
+        if(product_count>1){
+            dispatch(incrementQuantity(product_id))
+        }
     }
 
     const handleRemoveFromCart=()=>{

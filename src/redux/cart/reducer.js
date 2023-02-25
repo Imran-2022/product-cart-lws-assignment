@@ -7,13 +7,18 @@ const reducer = (state = initialState, action) => {
             console.log(action.payload);
             const newItemId = action.payload.product_id;
             const existingItem = state.find(item => item.product_id === newItemId);
-            console.log("existing",existingItem);
             if (existingItem) {
                 existingItem.product_count++;
             } else {
                 state.push(action.payload);
             }
-            return [...state];
+            // return [...state];
+            return [...state.map(item => {
+                if (item.product_id === action.payload.product_id) {
+                    item.product_quantity--;
+                }
+                return item;
+            })]
        
         case DELETE_FROM_CART:
             const filterCart=state.filter(dt=>dt.product_id!==action.payload)
@@ -22,7 +27,10 @@ const reducer = (state = initialState, action) => {
         case INCREMENT_CART_ITEM:
             return [...state.map(item => {
                 if (item.product_id === action.payload) {
-                    item.product_count++;
+                    if(item.product_quantity>0){
+                        item.product_count++;
+                        item.product_quantity--;
+                    }
                 }
                 return item;
             })]
@@ -32,6 +40,8 @@ const reducer = (state = initialState, action) => {
                 if (item.product_id === action.payload) {
                     if(item.product_count>1){
                         item.product_count--;
+                        item.product_quantity++;
+
                     }
                 }
                 return item;
