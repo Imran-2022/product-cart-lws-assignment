@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BillingsDetails = () => {
+const BillingsDetails = ({bill}) => {
     return (
         <div>
             <div className="billDetailsCard">
@@ -9,7 +9,7 @@ const BillingsDetails = () => {
                     {/* <!-- sub total --> */}
                     <div className="flex items-center justify-between">
                         <p>Sub Total</p>
-                        <p>BDT <span className="lws-subtotal">8800</span></p>
+                        <p>BDT <span className="lws-subtotal">{bill||0}</span></p>
                     </div>
                     {/* <!-- Discount --> */}
                     <div className="flex items-center justify-between">
@@ -24,7 +24,7 @@ const BillingsDetails = () => {
                     {/* <!-- Total --> */}
                     <div className="flex items-center justify-between pb-4">
                         <p className="font-bold">TOTAL</p>
-                        <p className="font-bold">BDT <span className="lws-total">8800</span></p>
+                        <p className="font-bold">BDT <span className="lws-total">{bill||0}</span></p>
                     </div>
                     <button className="placeOrderbtn">place order</button>
                 </div>
