@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../redux/cart/actions';
+import { decrementQuantity } from '../redux/product/actions';
 
 const ProductContainer = ({ dt }) => {
   const { product_id, product_name, product_category, product_image_url, product_price, product_quantity } = dt;
@@ -9,6 +10,7 @@ const ProductContainer = ({ dt }) => {
 
   const handleCart=()=>{
     dispatch(addToCart({...dt,product_count:1}))
+    dispatch(decrementQuantity(product_id))
   }
 
 
