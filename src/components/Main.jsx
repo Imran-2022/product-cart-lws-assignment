@@ -10,9 +10,9 @@ const Main = () => {
 
     return (
         <div>
-            <main class="py-16">
-                <div class="productWrapper">
-                    <div class="productContainer" id="lws-productContainer">
+            <main className="py-16">
+                <div className="productWrapper">
+                    <div className="productContainer" id="lws-productContainer">
 
                         {
                             product?.map(dt => <ProductContainer dt={dt} key={dt.product_id} />)
